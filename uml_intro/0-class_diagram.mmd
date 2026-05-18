@@ -1,0 +1,30 @@
+classDiagram
+
+    note "Library diagram"
+    Library o-- User
+    Library o-- Book
+    Loan --> Book
+    Loan --> User
+    Library *-- Loan
+    class Library{
+        +add_book()
+        +register_user()
+        +create_loan()
+    }
+    class User{
+        -str name
+        -str email
+    }
+    class Book{
+        -str title
+        -str author
+        -bool isavailable
+
+        +mark_as_unavailable()
+        +mark_as_available()
+    }
+    class Loan{
+        -int start_date
+        -int end_date
+        +close_loan()
+    }
