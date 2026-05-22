@@ -1,0 +1,57 @@
+---
+config:
+  layout: elk
+---
+classDiagram
+    class User {
+        -str userId
+        -str name
+        -list playlists
+        -list followedArtists
+        -list libraryAlbums
+        -list librarySongs
+        +createPlaylist()
+        +followArtist()
+        +addToLibrary(item)
+        +browseContent()
+    }
+
+    class Artist {
+        -str artistId
+        -str name
+        -list albums
+        +createAlbum()
+        +releaseSong()
+    }
+
+    class Album {
+        -str albumId
+        -str title
+        -str releaseDate
+        -list songs
+        +getSongs()
+    }
+
+    class Song {
+        -str songId
+        -str title
+        -float duration
+        +play()
+    }
+
+    class Playlist {
+        -str playlistId
+        -str name
+        -list songs
+        +addSong()
+        +removeSong()
+        +playAll()
+    }
+
+    User "1" o-- "*" Playlist : creates
+    User "1" --> "*" Artist : follows
+    User "1" --> "*" Album : has in library
+    User "1" --> "*" Song : has in library
+    Artist "1" *-- "*" Album : creates
+    Album "1" *-- "*" Song : contains
+    Playlist "1" --> "*" Song : includes

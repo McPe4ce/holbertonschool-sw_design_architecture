@@ -1,0 +1,29 @@
+sequenceDiagram
+note "Adding song to a Playlist"
+participant User
+participant Catalogue
+
+User ->> Catalogue: browse_songs
+Catalogue -->> User: displays_songs()
+create participant Playlist
+User->> Playlist: add_songs()
+Playlist -->> User: return "Song added to Playlist"
+
+
+
+sequenceDiagram 
+
+participant User
+participant Playlist
+
+User ->> Playlist: remove_songs()
+Playlist -->> User: returns playlist without the song
+
+
+sequenceDiagram 
+
+participant User
+participant Artist
+
+User ->> Artist: follow_artist()
+Artist -->> User: Now in followed_artist
